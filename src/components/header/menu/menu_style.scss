@@ -1,23 +1,33 @@
-/* Add a black background color to the top navigation */
-
 @media screen and (max-width: 600px) {
 
-  body{
-    margin: 0;
+  .topnav_mobile_button{
+    div{
+        width: 35px;
+        height: 3px;
+        background-color: black;
+        margin: 6px 0;
+    }
   }
-  
+
   .topnav_container{
     position: absolute;
+    display: none;
+    opacity: 0;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
     background-color: #0000009e;
     font-size: 1.3em;
+    z-index: 15;
     
     .topnav_itens{
       background-color: white;
       height: 100%;
       width: 75%;
       display: inline-block;
+      animation: left_trasition 3s ease;
+      z-index: 20;
 
       ul{
         list-style: none;
@@ -31,11 +41,11 @@
           color: blue;
 
           &:not(:last-child){
-            border-bottom: 3px solid blue;
+            border-bottom: 3px solid #e4e4e4;
           }
           
           a{
-            color: blue;
+            color: #7aa3d1;
             text-decoration: none;
 
             &:hover, &:active, &:focus{
@@ -45,7 +55,14 @@
         }
       }
     }
-    button{
+  }
+  .topnav_container_active{
+    display: block;
+    opacity: 1;
+  }
+  .topnav_button_active{
+      position: absolute;
+      z-index: 20;
       font-size: 1.5em;
       line-height: 66px;
       cursor: pointer;
@@ -55,10 +72,51 @@
       width: 65px;
       height: 65px;
       border-radius: 50%;
-      background-color: #e2e2e2;
+      background-color: #f1eff2;
       border: none;
       outline: none;
+  }
+}
+@media screen and (min-width: 601px) {
+  .topnav_button_active{
+    display: none;
+  }
+  .menu_container{
+    width: 100%;
+    height: 60px;
+    margin: 0;
+    background-color: white;
+    text-align: center;
+    line-height: 60px;
+    -webkit-box-shadow: 0px 4px 31px -4px rgba(0,0,0,0.57);
+    -moz-box-shadow: 0px 4px 31px -4px rgba(0,0,0,0.57);
+    box-shadow: 0px 4px 31px -4px rgba(0,0,0,0.57);
+    ul{
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      li{
+          display: inline;
+          margin-left: 45px;
+          a{
+            color: #7aa3d1;
+            text-decoration: none;
+            padding: 10px 5px 10px 5px;
+            border-radius: 6px;
+            transition: all 400ms ease;
+            &:hover, &:active, &:focus{
+              text-decoration:none;
+              background-color: #f1eff2;
+            }
+          }
+      }
+    }
+    .topnav_itens{
+      margin: auto;
+      left: 0;
+      right: 0;
+      padding-right: 20px;
+      padding-left: 20px;
     }
   }
-
-}
+}  
