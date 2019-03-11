@@ -3,6 +3,7 @@ import Search from './search/Search';
 import Menu from './menu/Menu';
 import Logo from '../utils/logo.js';
 import './style_header.css';
+import 'bootstrap-4-grid/css/grid.css';
 
 class Header extends Component{
 
@@ -15,6 +16,11 @@ class Header extends Component{
   }
 
   handle_display(focus){
+    let screenSize = document.documentElement.clientWidth;
+    console.log(screenSize);
+    if (screenSize >= 601) {
+      return;
+    }
     if (focus) {
       this.setState({
         switch_display:'none'
@@ -32,9 +38,11 @@ class Header extends Component{
     return(
       <header>
         <div className='header_container'>
-      	  <Menu display={switch_display}/>
-      	  <Logo display={switch_display} />
-      	  <Search whenPutInFocus={this.handle_display} />
+          <Menu display={switch_display}/>
+          <div>
+      	   <Logo display={switch_display} />
+      	   <Search whenPutInFocus={this.handle_display} />
+          </div>
       	</div>
       </header>
 	  )

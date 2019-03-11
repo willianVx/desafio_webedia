@@ -1,124 +1,115 @@
-/*
-.search_input{
-	border-radius: 6px;
-}
-
-.search_icon{
-	img{
-		height: 29px;
-	}
-}
-*/
+@media screen and (max-width: 600px) {
 $shadow: 0px 0px 9px 3px rgba(0,0,0,0.17);
-.search_container {
-	position: relative;
-  .search {
-    position: absolute;
-    margin: auto;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 65px;
-    height: 65px;
-    transition: all 1s;
-    z-index: 4;
-    &:hover {
-      cursor: pointer;
-    }
-    &::before {
-      content: "";
+  .search_container {
+  	position: relative;
+    .search {
       position: absolute;
       margin: auto;
-      top: 22px;
+      top: 0;
       right: 0;
       bottom: 0;
-      left: 22px;
-      width: 12px;
-      height: 2px;
-      background: black;
-      transform: rotate(45deg);
-      transition: all .5s;
+      left: 0;
+      width: 65px;
+      height: 65px;
+      transition: all 1s;
+      z-index: 4;
+      &:hover {
+        cursor: pointer;
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        margin: auto;
+        top: 22px;
+        right: 0;
+        bottom: 0;
+        left: 22px;
+        width: 12px;
+        height: 2px;
+        background: black;
+        transform: rotate(45deg);
+        transition: all .5s;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        margin: auto;
+        top: -5px;
+        right: 0;
+        bottom: 0;
+        left: -5px;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        border: 2px solid black;
+        transition: all .5s;
+      }
+
     }
-    &::after {
-      content: "";
-      position: absolute;
+    input {
+      position: relative;
       margin: auto;
-      top: -5px;
+      top: 0;
       right: 0;
       bottom: 0;
-      left: -5px;
+      left: 0;
       width: 25px;
       height: 25px;
-      border-radius: 50%;
-      border: 2px solid black;
-      transition: all .5s;
-    }
-
-  }
-  input {
-    position: relative;
-    margin: auto;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 25px;
-    height: 25px;
-    outline: none;
-    color: black;
-    padding: 0 80px 0 20px;
-    border-radius: 12px;
-    transition: all 1s;
-    opacity: 0;
-    z-index: 5;
-    font-weight: bolder;
-    letter-spacing: 0.1em;
-    font-size: 1.3em;
-    border:none;
-    -webkit-box-shadow: $shadow;
-    -moz-box-shadow: $shadow;
-    box-shadow: $shadow;
-    &:hover {
-      cursor: pointer;
-    }
-    &:focus {
-      width: 45%;
-      height: 65px;
-      opacity: 1;
-      cursor: text;
-    }
-    &:focus ~ .search {
-      position: relative;
-      float: right;
-      margin-left: 10px;
-      right: -290px;
-      z-index: 6;
-      border-radius: 50%;
-      background-color: white;
+      outline: none;
+      color: black;
+      padding: 0 80px 0 20px;
+      border-radius: 12px;
+      transition: all 1s;
+      opacity: 0;
+      z-index: 5;
+      font-weight: bolder;
+      letter-spacing: 0.1em;
+      font-size: 1.3em;
+      border:none;
       -webkit-box-shadow: $shadow;
       -moz-box-shadow: $shadow;
       box-shadow: $shadow;
-      &::before {
-        top: 0;
-        left: 0;
-        width: 20px;
+      &:hover {
+        cursor: pointer;
       }
-      &::after {
-        top: 0;
-        left: 0;
-        width: 20px;
-        height: 2px;
-        border: none;
-        background: black;
-        border-radius: 0%;
-        transform: rotate(-45deg);
+      &:focus {
+        width: 45%;
+        height: 65px;
+        opacity: 1;
+        cursor: text;
       }
-    }
-    &::placeholder {
-      color: black;
-      opacity: 0.5;
-      font-weight: bolder;
+      &:focus ~ .search {
+        position: relative;
+        float: right;
+        margin-left: 10px;
+        right: -290px;
+        z-index: 6;
+        border-radius: 50%;
+        background-color: white;
+        -webkit-box-shadow: $shadow;
+        -moz-box-shadow: $shadow;
+        box-shadow: $shadow;
+        &::before {
+          top: 0;
+          left: 0;
+          width: 20px;
+        }
+        &::after {
+          top: 0;
+          left: 0;
+          width: 20px;
+          height: 2px;
+          border: none;
+          background: black;
+          border-radius: 0%;
+          transform: rotate(-45deg);
+        }
+      }
+      &::placeholder {
+        color: black;
+        opacity: 0.5;
+        font-weight: bolder;
+      }
     }
   }
 }
