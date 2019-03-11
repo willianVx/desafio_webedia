@@ -19,13 +19,12 @@ class Search extends Component{
 
   render(){
     return(
-      <div className="search_container" onFocus={ this.onFocus } onBlur={ this.onBlur }>
-		<span className="search_input_container"></span>
-		 <input type="text" placeholder="Pesquisa..."/>
-		
-		<div className="search"></div>
+    <div className="search_container" onFocus={ this.onFocus } onBlur={ this.onBlur }>
+  		<input type="text" placeholder="Pesquisa..."/>
+      <div className="search_icon"></div>
+		  <div className="search"></div>
 	  </div>
-	)
+	  )
   }
 }
 

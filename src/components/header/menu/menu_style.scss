@@ -1,4 +1,5 @@
-@media screen and (max-width: 600px) {  
+@media screen and (max-width: 600px) {
+
   .topnav_mobile_button{
     div{
         width: 35px;
@@ -27,6 +28,7 @@
       display: inline-block;
       animation: left_trasition 3s ease;
       z-index: 20;
+
       ul{
         list-style: none;
         padding-top: 0;
@@ -75,10 +77,46 @@
       outline: none;
   }
 }
-
-
 @media screen and (min-width: 601px) {
   .topnav_button_active{
     display: none;
   }
-}
+  .menu_container{
+    width: 100%;
+    height: 60px;
+    margin: 0;
+    background-color: white;
+    text-align: center;
+    line-height: 60px;
+    -webkit-box-shadow: 0px 4px 31px -4px rgba(0,0,0,0.57);
+    -moz-box-shadow: 0px 4px 31px -4px rgba(0,0,0,0.57);
+    box-shadow: 0px 4px 31px -4px rgba(0,0,0,0.57);
+    ul{
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      li{
+          display: inline;
+          margin-left: 45px;
+          a{
+            color: #7aa3d1;
+            text-decoration: none;
+            padding: 10px 5px 10px 5px;
+            border-radius: 6px;
+            transition: all 400ms ease;
+            &:hover, &:active, &:focus{
+              text-decoration:none;
+              background-color: #f1eff2;
+            }
+          }
+      }
+    }
+    .topnav_itens{
+      margin: auto;
+      left: 0;
+      right: 0;
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+  }
+}  
