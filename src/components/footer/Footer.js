@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import Logo from '../utils/logo.js';
+import './footer_style.css';
 
 class Footer extends Component{
 
   render(){
     return(
-      <div>
-        footer
+      <footer>
         <Logo />
-      </div>
+      </footer>
 	  )
   }
 

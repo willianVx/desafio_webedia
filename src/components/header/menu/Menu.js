@@ -10,7 +10,6 @@ class Menu extends Component{
       MobileMenuButton : 'topnav_container',
       display: props.display 
     }
-
     this.handleMobileMenu = this.handleMobileMenu.bind(this);
   } 
 
