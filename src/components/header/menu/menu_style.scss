@@ -1,13 +1,24 @@
-/* Add a black background color to the top navigation */
-
 @media screen and (max-width: 600px) {
 
   body{
     margin: 0;
   }
   
+  .topnav_mobile_button{
+    div{
+        width: 35px;
+        height: 3px;
+        background-color: black;
+        margin: 6px 0;
+    }
+  }
+
   .topnav_container{
     position: absolute;
+    display: none;
+    opacity: 0;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
     background-color: #0000009e;
@@ -18,6 +29,7 @@
       height: 100%;
       width: 75%;
       display: inline-block;
+      animation: left_trasition 3s ease;
 
       ul{
         list-style: none;
@@ -31,11 +43,11 @@
           color: blue;
 
           &:not(:last-child){
-            border-bottom: 3px solid blue;
+            border-bottom: 3px solid #e4e4e4;
           }
           
           a{
-            color: blue;
+            color: #7aa3d1;
             text-decoration: none;
 
             &:hover, &:active, &:focus{
@@ -45,7 +57,14 @@
         }
       }
     }
-    button{
+  }
+  .topnav_container_active{
+    display: block;
+    opacity: 1;
+  }
+  .topnav_button_active{
+      position: absolute;
+      z-index: 20;
       font-size: 1.5em;
       line-height: 66px;
       cursor: pointer;
@@ -55,10 +74,8 @@
       width: 65px;
       height: 65px;
       border-radius: 50%;
-      background-color: #e2e2e2;
+      background-color: #f1eff2;
       border: none;
       outline: none;
-    }
   }
-
 }

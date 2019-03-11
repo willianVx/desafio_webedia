@@ -6,31 +6,39 @@ class Menu extends Component{
   constructor(props){
     super(props);
     this.state = {	
-      MobileMenuButton : 'topnav' 
+      MobileMenuButton : 'topnav_container',
+      display: props.display 
     }
 
     this.handleMobileMenu = this.handleMobileMenu.bind(this);
   }	
 
   handleMobileMenu(){
-    if(this.state.MobileMenuButton === 'topnav'){
+    if(this.state.MobileMenuButton === 'topnav_container'){
       this.setState({
-      	MobileMenuButton: 'topnav responsive' 
+      	MobileMenuButton: 'topnav_container topnav_container_active' 
       })
     }else{
       this.setState({
-        MobileMenuButton: 'topnav'
+        MobileMenuButton: 'topnav_container'
       });
     }
   }
 
   render(){
-  	//var mobileController = this.state.MobileMenuButton;
+  	let mobileController = this.state.MobileMenuButton;
+    let styleDisplay = {display : this.props.display};
     return(
      	
-     	<div>
+     	<div style={styleDisplay} className='div_trasition'>
+     		
+        <div className="topnav_mobile_button" onClick={this.handleMobileMenu}>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
 
-	    	<div className='topnav_container'>
+	    	<div className={mobileController}>
 
 			  <div className='topnav_itens'>
 
@@ -41,12 +49,12 @@ class Menu extends Component{
 				   <li><a href="/TopNews/argentina">Notícias da Argentina</a></li>
 				   <li><a href="/TopNews/franca">Notícias da França</a></li>
 			   </ul>
-			   
-			  </div>
-            
-              <button>X</button>
 
-			</div>
+			  </div>
+
+        <button className="topnav_button_active" onClick={this.handleMobileMenu}>X</button>
+
+			  </div>
 
 		</div>
 	  )

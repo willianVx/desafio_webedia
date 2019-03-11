@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
+import brand_webedia from '../img/brand_webedia.png';
+import './utils.css';
 
 class Logo extends Component{
+  constructor(props){
+  	super(props);
+  	this.state = {
+  		display: props.display
+  	}
+  }
   render(){
+  	let styleDisplay = {display : this.props.display}
+
     return(
-      <img src='#' alt='Logo webedia' />
+      	<img style={styleDisplay} className='brand_webedia div_trasition' src={brand_webedia} alt='Logo webedia' />
 	  )
   }
 }
