@@ -13,7 +13,7 @@ class Logo extends Component{
   	let styleDisplay = {display : this.props.display}
 
     return(
-      	<img style={styleDisplay} className='brand_webedia div_trasition' src={brand_webedia} alt='Logo webedia' />
+      	<img style={styleDisplay} className='brand_webedia' src={brand_webedia} alt='Logo webedia' />
 	  )
   }
 }

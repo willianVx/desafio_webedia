@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './menu_style.css';
 import 'bootstrap-4-grid/css/grid.css';
+import { NavLink } from 'react-router-dom'
 
 class Menu extends Component{
 
@@ -43,11 +44,11 @@ class Menu extends Component{
         <div className='topnav_itens container'>
 
          <ul>
-           <li><a href="/TopNews">Notícias em destaque</a></li>
-           <li><a href="/TopNews/brasil">Notícias do Brasil</a></li>
-           <li><a href="/TopNews/eua">Notícias do EUA</a></li>
-           <li><a href="/TopNews/argentina">Notícias da Argentina</a></li>
-           <li><a href="/TopNews/franca">Notícias da França</a></li>
+           <li><NavLink to="/">Notícias em destaque</NavLink></li>
+           <li><NavLink to="/brasil">Notícias do Brasil</NavLink></li>
+           <li><NavLink to="/eua">Notícias do EUA</NavLink></li>
+           <li><NavLink to="/argentina">Notícias da Argentina</NavLink></li>
+           <li><NavLink to="/franca">Notícias da França</NavLink></li>
          </ul>
 
         </div>
