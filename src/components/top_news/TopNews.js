@@ -48,22 +48,35 @@ class TopNews extends Component{
 
     var articles = this.state.articles;
 
-    console.log(articles);
+    var getFormatedDate = function(date){
+      let d = new Date(date);
+      let day = d.getDate();
+      let month = d.getMonth();
+      let year = d.getFullYear();
+      return  day + '/' + month + '/' + year;
+    }
+
+    var getAuthor = function(author){
+      if (author != null) {
+        return 'Por: ' + author;
+      }else{
+        return '';
+      }
+    }
 
     if (articles != null) {
 
       var Render_news_card = Object.keys(articles).map(function(key){
-        console.log(articles[key]);
         return (
           <div key={key.toString()} className='col-lg-5 top_news_card card_shadow'>
             <div className='top_news_img'>
               <img src={articles[key].urlToImage} alt='article' />
             </div>
             <div className='top_news_info'>
-              <p>{articles[key].publishedAt}</p>
+              <p>{getFormatedDate( articles[key].publishedAt )}</p>
               <h2>{articles[key].title}</h2>
               <p>{articles[key].description}</p>
-              <p>Por: {articles[key].author}</p>
+              <p>{getAuthor(articles[key].author)}</p>
             </div>
           </div>
           )
@@ -73,66 +86,17 @@ class TopNews extends Component{
 
     return(
       <section className='container top_news_container'>
-
-      {Render_news_card}
-
         <div className='row'>
-          <div className='col-lg-5 top_news_card card_shadow'>
-            <div className='top_news_img'></div>
-            <div className='top_news_info'>
-              <p>27/10/1989</p>
-              <h2>Lorem inpsum</h2>
-              <p>Lorem inpsum doler sit amotn wfjhkjhjkdfhsdjhfskjdh</p>
-              <p>Por: Lorem Inpsum</p>
-            </div>
+         {Render_news_card}
+        </div>
+        <div className='row'>
+          <div className='top_news_pagination'>
+            <span>01</span>
+            <span>07</span>
+            <span>08</span>
+            <span>09</span>
+            <span>18</span>
           </div>
-
-          <div className='col-lg-5 top_news_card card_shadow'>
-            <div className='top_news_img'></div>
-            <div className='top_news_info'>
-              <p>27/10/1989</p>
-              <h2>Lorem inpsum</h2>
-              <p>Lorem inpsum doler sit amotn wfjhkjhjkdfhsdjhfskjdh</p>
-              <p>Por: Lorem Inpsum</p>
-            </div>
-          </div>
-
-          <div className='row top_news_warap_card'>
-
-            <div className='top_news_card'>
-              <div className='top_news_img'></div>
-              <div className='top_news_info'>
-                <p>27/10/1989</p>
-                <h2>Lorem inpsum</h2>
-                <p>Lorem inpsum doler sit amotn wfjhkjhjkdfhsdjhfskjdh</p>
-                <p>Por: Lorem Inpsum</p>
-              </div>
-            </div>
-
-
-            <div className='top_news_card'>
-              <div className='top_news_img'></div>
-              <div className='top_news_info'>
-                <p>27/10/1989</p>
-                <h2>Lorem inpsum</h2>
-                <p>Lorem inpsum doler sit amotn wfjhkjhjkdfhsdjhfskjdh</p>
-                <p>Por: Lorem Inpsum</p>
-              </div>
-            </div>
-
-
-            <div className='top_news_card'>
-              <div className='top_news_img'></div>
-              <div className='top_news_info'>
-                <p>27/10/1989</p>
-                <h2>Lorem inpsum</h2>
-                <p>Lorem inpsum doler sit amotn wfjhkjhjkdfhsdjhfskjdh</p>
-                <p>Por: Lorem Inpsum</p>
-              </div>
-            </div>
-
-          </div>
-
         </div>
       </section>
 	  )
