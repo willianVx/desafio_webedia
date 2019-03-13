@@ -12,13 +12,13 @@ class App extends Component {
       <Router>
 	      <div className="App">
 
-	        <Header/>
+	        <Header />
 
-	        <Route exact path="/" render={(props) => <TopNews {...props} news={'noticias-destaque'} />} />
-	        <Route path="/brasil" render={(props) => <TopNews {...props} news={'noticias-brasil'} />} />
-	        <Route path="/eua" render={(props) => <TopNews {...props} news={'noticias-eua'} />} />
-	        <Route path="/argentina" render={(props) => <TopNews {...props} news={'noticias-argentina'} />} />
-	        <Route path="/franca" render={(props) => <TopNews {...props} news={'noticias-franca'} />} />
+	        <Route exact path="/" render={(props) => <TopNews {...props} news={'br'} />} />
+	        <Route path="/brasil" render={(props) => <TopNews {...props} news={'br'} />} />
+	        <Route path="/eua" render={(props) => <TopNews {...props} news={'us'} />} />
+	        <Route path="/argentina" render={(props) => <TopNews {...props} news={'ar'} />} />
+	        <Route path="/franca" render={(props) => <TopNews {...props} news={'fr'} />} />
 
 	        <Footer />
 
