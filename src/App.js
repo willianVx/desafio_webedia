@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from './components/header/Header';
 import TopNews from './components/top_news/TopNews';
 import Footer from './components/footer/Footer.js';
-import { BrowserRouter as Router, Route} from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect} from "react-router-dom";
 
 import './App.css';
 
@@ -21,6 +21,8 @@ class App extends Component {
 		this.setState({
 			search_value: value
 		})
+
+		console.log(value);
 	}
 
   render() {
