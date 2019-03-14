@@ -39,8 +39,8 @@ class Header extends Component{
         <div className='header_container'>
           <Menu display={switch_display}/>
             <div className='header_top container'>
-                <Logo display={switch_display} />
-                <Search whenPutInFocus={this.handle_display} />
+                <Logo display={switch_display} link={'/'} />
+                <Search whenPutInFocus={this.handle_display} updateSearchValue = {this.props.updateSearchValue}/>
             </div>
         </div>
       </header>

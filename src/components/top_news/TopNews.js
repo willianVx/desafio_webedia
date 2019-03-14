@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap-4-grid/css/grid.css';
-import './TopNews_style.css';
+import './Topnews_style.css';
 
 class TopNews extends Component{
 
@@ -33,11 +33,24 @@ class TopNews extends Component{
                    mode: 'cors',
                    cache: 'default' };
 
-    fetch('https://newsapi.org/v2/top-headlines?' +
-          'country=' + country + '&' +
-          'pageSize=7&' +
-          'page=' + page + '&' +
-          'apiKey=e57869d5c03b48e78801cef6dae61741',myInit)
+    
+    var fetch_query;
+
+    if (this.props.search_value) {
+      fetch_query = 'https://newsapi.org/v2/everything?' +
+      'q=' + this.props.search_value + '&' +
+      'pageSize=7&' +
+      'page=' + page + '&' +
+      'apiKey=e57869d5c03b48e78801cef6dae61741';
+    }else{
+      fetch_query = 'https://newsapi.org/v2/top-headlines?' +
+      'country=' + country + '&' +
+      'pageSize=7&' +
+      'page=' + page + '&' +
+      'apiKey=e57869d5c03b48e78801cef6dae61741';
+    }
+
+    fetch(fetch_query, myInit)
     .then(response =>{
       return response.json();
     })
@@ -46,9 +59,6 @@ class TopNews extends Component{
         let articles = data.articles;
         let total_results = data.totalResults;
         let total_pages = Math.round(total_results / 7);
-        //let total_pages = 10;
-
-        console.log(total_pages);
 
         this.setState({
           total_pages: total_pages,
@@ -183,23 +193,24 @@ class TopNews extends Component{
 
     let paginationBarState = this.state.paginationBarState;
 
-    return(
-      <section className='container top_news_container'>
-        <div className='row'>
-         {Render_news_card}
-        </div>
-        <div className='row'>
-          <div className={paginationBarState}>
-            <span onClick={() => this.setPage(getPage('firtPage'))}>{formatNumberPage(getPage('firtPage'))}</span>
-            <span onClick={() => this.setPage(getPage('prevPage'))}>{formatNumberPage(getPage('prevPage'))}</span>
-            <span onClick={() => this.setPage(getPage('currentPage'))}>{formatNumberPage(getPage('currentPage'))}</span>
-            <span className='top_news_button' onClick={() => this.setPage(getPage('nextpage'))}>{formatNumberPage(getPage('nextpage'))}</span>
-            <span onClick={() => this.setPage(getPage('lastPage'))}>{formatNumberPage(getPage('lastPage'))}</span>
+      return(
+        <section className='container top_news_container'>
+          <div className='row'>
+          {Render_news_card}
           </div>
-        </div>
-      </section>
-	  )
-  }
+          <div className='row'>
+            <div className={paginationBarState}>
+              <span onClick={() => this.setPage(getPage('firtPage'))}>{formatNumberPage(getPage('firtPage'))}</span>
+              <span onClick={() => this.setPage(getPage('prevPage'))}>{formatNumberPage(getPage('prevPage'))}</span>
+              <span onClick={() => this.setPage(getPage('currentPage'))}>{formatNumberPage(getPage('currentPage'))}</span>
+              <span className='top_news_button' onClick={() => this.setPage(getPage('nextpage'))}>{formatNumberPage(getPage('nextpage'))}</span>
+              <span onClick={() => this.setPage(getPage('lastPage'))}>{formatNumberPage(getPage('lastPage'))}</span>
+            </div>
+          </div>
+        </section>
+      )
+
+    }
 
 }
 export default TopNews;

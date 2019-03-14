@@ -7,7 +7,7 @@ class Footer extends Component{
   render(){
     return(
       <footer>
-        <Logo />
+        <Logo link={'/webedia/vagas'} />
       </footer>
 	  )
   }

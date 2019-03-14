@@ -1,1 +1,9 @@
-{"version":3,"sourceRoot":"","sources":["footer_style.scss"],"names":[],"mappings":"AAAA,OACC,sBACA,SACA,WACA,YACA,iBACA,aACA,uBACA,iDACG,8CACA","file":"footer_style.css"}
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,MAAM,AAAA,CACL,gBAAgB,CAAE,KAAK,CACvB,MAAM,CAAE,CAAC,CACT,KAAK,CAAC,IAAI,CACV,MAAM,CAAE,IAAI,CACZ,WAAW,CAAE,IAAI,CACjB,OAAO,CAAE,IAAI,CACb,eAAe,CAAE,MAAM,CACvB,kBAAkB,CAAE,GAAG,CAAE,IAAG,CAAC,IAAI,CAAC,GAAG,CAAC,gBAAgB,CACnD,eAAe,CAAE,GAAG,CAAE,IAAG,CAAC,IAAI,CAAC,GAAG,CAAC,gBAAgB,CACnD,UAAU,CAAE,GAAG,CAAE,IAAG,CAAC,IAAI,CAAC,GAAG,CAAC,gBAAgB,CACjD",
+    "sources": [
+        "footer_style.scss"
+    ],
+    "names": [],
+    "file": "footer_style.css"
+}

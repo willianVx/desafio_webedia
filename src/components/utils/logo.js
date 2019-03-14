@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import brand_webedia from '../img/brand_webedia.png';
+import { NavLink } from 'react-router-dom';
 import './utils.css';
 
 class Logo extends Component{
@@ -13,7 +14,9 @@ class Logo extends Component{
   	let styleDisplay = {display : this.props.display}
 
     return(
-      	<img style={styleDisplay} className='brand_webedia' src={brand_webedia} alt='Logo webedia' />
+			<NavLink to={this.props.link}> 
+		  	<img style={styleDisplay} className='brand_webedia' src={brand_webedia} alt='Logo webedia' />
+			</NavLink>
 	  )
   }
 }
