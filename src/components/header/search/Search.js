@@ -24,7 +24,6 @@ class Search extends Component{
     		<input type="text" placeholder="Pesquisa..."/>
         <div className="search_icon"></div>
   		  <div className="search"></div>
-        <button type='submit'></button>
       </form>
 	  </div>
 	  )

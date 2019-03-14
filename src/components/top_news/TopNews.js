@@ -10,12 +10,19 @@ class TopNews extends Component{
     this.state={
       country:  this.props.news || 'br',
       page: 1,
-      articles: null
+      total_pages: 0,
+      articles: null,
+      paginationBarState: 'top_news_pagination_page_1'
     }
+    this.fetchData = this.fetchData.bind(this);
+    this.setPage = this.setPage.bind(this);
   }
 
   componentDidMount() {
+    this.fetchData();
+  }
 
+  fetchData(){
     let myHeaders = new Headers();
 
     let country = this.state.country;
@@ -36,12 +43,40 @@ class TopNews extends Component{
     })
     .then(data => {
       if (data.status === "ok") {
-        var articles = data.articles
+        let articles = data.articles;
+        let total_results = data.totalResults;
+        let total_pages = Math.round(total_results / 7);
+        //let total_pages = 10;
+
+        console.log(total_pages);
+
         this.setState({
+          total_pages: total_pages,
           articles: articles
         });
       }
     });
+  }
+
+  setPage(page){
+
+    let paginationBarState = ()=> {
+      if (page === 1) {
+        return 'top_news_pagination_page_1'
+      }
+      if (page === this.state.total_pages) {
+        return 'top_news_pagination_lastPage'
+      }else{
+        return 'top_news_pagination'
+      }
+    }
+
+    this.setState({page: page, paginationBarState: paginationBarState()}, 
+      () => {
+        this.fetchData();
+      }
+    );
+
   }
 
   render(){
@@ -76,7 +111,7 @@ class TopNews extends Component{
               <p>{getFormatedDate( articles[key].publishedAt )}</p>
               <h2>{articles[key].title}</h2>
               <p>{articles[key].description}</p>
-              <p>{getAuthor(articles[key].author)}</p>
+              <p className='top_news_author'>{getAuthor(articles[key].author)}</p>
             </div>
           </div>
           )
@@ -84,18 +119,82 @@ class TopNews extends Component{
 
     }
 
+    let formatNumberPage = (number) =>{
+      let strPage = number.toString();
+      if(strPage.length === 1) {
+        return '0' + number;
+      }else{
+        return number;
+      }
+    }
+
+    let getPage = (option) => {
+      let currentPage = this.state.page;
+      let total_pages = this.state.total_pages;
+
+      let p = {
+        firtPage: function(){
+          if (currentPage === 2) {
+            return this.lastPage();
+          }else{
+            return 1;
+          }
+        },
+        lastPage: function(){
+          if (currentPage === 1) {
+            return 5;
+          }else{
+            return total_pages;
+          }
+        },
+        currentPage: function(){
+          if (currentPage === 1) {
+            return 3
+          }
+          if(currentPage === total_pages){
+            return currentPage - 2;
+          }else{
+            return currentPage
+          }
+        },
+        prevPage: function(){
+          if (currentPage === 1) {
+            return 2;
+          }
+          if (currentPage === total_pages) {
+            return currentPage -3;
+          }else{
+            return currentPage - 1;
+          }
+        },
+        nextpage: function(){
+          if (currentPage === 1) {
+            return 4;
+          }
+          if(currentPage === total_pages) {
+            return currentPage - 1;
+          }else{
+            return currentPage + 1;
+          }
+        }
+      }
+      return p[option]();
+    }
+
+    let paginationBarState = this.state.paginationBarState;
+
     return(
       <section className='container top_news_container'>
         <div className='row'>
          {Render_news_card}
         </div>
         <div className='row'>
-          <div className='top_news_pagination'>
-            <span>01</span>
-            <span>07</span>
-            <span>08</span>
-            <span>09</span>
-            <span>18</span>
+          <div className={paginationBarState}>
+            <span onClick={() => this.setPage(getPage('firtPage'))}>{formatNumberPage(getPage('firtPage'))}</span>
+            <span onClick={() => this.setPage(getPage('prevPage'))}>{formatNumberPage(getPage('prevPage'))}</span>
+            <span onClick={() => this.setPage(getPage('currentPage'))}>{formatNumberPage(getPage('currentPage'))}</span>
+            <span className='top_news_button' onClick={() => this.setPage(getPage('nextpage'))}>{formatNumberPage(getPage('nextpage'))}</span>
+            <span onClick={() => this.setPage(getPage('lastPage'))}>{formatNumberPage(getPage('lastPage'))}</span>
           </div>
         </div>
       </section>
@@ -103,5 +202,4 @@ class TopNews extends Component{
   }
 
 }
-
 export default TopNews;
