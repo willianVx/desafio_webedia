@@ -33,6 +33,16 @@
 	}
 }
 
+.top_news_card{
+	a{
+		text-decoration: none;
+		color: #949494;
+		&:active, &:hover, &:focus{
+			text-decoration:none;
+		}
+	}
+}
+
 @media (max-width: 901px){
 	.top_news_container{
 		.row{

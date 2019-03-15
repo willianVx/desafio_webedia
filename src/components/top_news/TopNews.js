@@ -81,6 +81,8 @@ class TopNews extends Component{
 
         let total_round = Math.round(total_results / 7)
 
+        console.log(data);
+
         let total_pages = total_round < 100 ? total_round : 99;
 
         this.setState({
@@ -144,7 +146,9 @@ class TopNews extends Component{
 
       var Render_news_card = Object.keys(articles).map(function(key){
         return (
+          
           <div key={key.toString()} className='col-lg-5 top_news_card card_shadow'>
+          <a  href={articles[key].url}>
             <div className='top_news_img'>
               <img src={articles[key].urlToImage} alt='article' />
             </div>
@@ -154,6 +158,7 @@ class TopNews extends Component{
               <p>{articles[key].description}</p>
               <p className='top_news_author'>{getAuthor(articles[key].author)}</p>
             </div>
+          </a>
           </div>
           )
       });
