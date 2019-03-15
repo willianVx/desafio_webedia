@@ -9,6 +9,7 @@ class TopNews extends Component{
 
     this.state={
       country:  this.props.news || 'br',
+      search_value: this.props.search_value,
       page: 1,
       total_pages: 0,
       articles: null,
@@ -16,10 +17,17 @@ class TopNews extends Component{
     }
     this.fetchData = this.fetchData.bind(this);
     this.setPage = this.setPage.bind(this);
+    this.updateSearch_value = this.updateSearch_value.bind(this);
   }
 
   componentDidMount() {
-    this.fetchData();
+    this.setState({search_value: this.props.search_value},this.fetchData())
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.search_value !== prevProps.search_value) {
+      this.fetchData();
+    }
   }
 
   fetchData(){
@@ -68,6 +76,14 @@ class TopNews extends Component{
     });
   }
 
+  updateSearch_value(value){
+    this.setState({
+      search_value: value
+    }, ()=> {
+      this.fetchData()
+    });
+  }
+
   setPage(page){
 
     let paginationBarState = ()=> {
@@ -88,6 +104,8 @@ class TopNews extends Component{
     );
 
   }
+
+
 
   render(){
 
@@ -192,7 +210,6 @@ class TopNews extends Component{
     }
 
     let paginationBarState = this.state.paginationBarState;
-
       return(
         <section className='container top_news_container'>
           <div className='row'>
