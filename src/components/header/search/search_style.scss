@@ -1,11 +1,22 @@
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1200px) {
   $shadow: 0px 0px 9px 3px rgba(0,0,0,0.17);
   .search_container {
-    position: relative;
+    position: absolute;
+    padding: 5px;
+    border-radius: 24px;
+    right: 0;
+
+    form{
+      position: relative;
+      float: right;
+      top: -28px;
+      right: -13%;
+    }
+
     .search {
       position: absolute;
       margin: auto;
-      top: 0;
+      top: -38px;
       right: 0;
       bottom: 0;
       left: 0;
@@ -49,12 +60,12 @@
     input {
       position: relative;
       margin: auto;
-      top: 0;
+      top: -20px;
       right: 0;
       bottom: 0;
       left: 0;
       width: 25px;
-      height: 25px;
+      height: 60px;
       outline: none;
       color: black;
       padding: 0 80px 0 20px;
@@ -73,16 +84,17 @@
         cursor: pointer;
       }
       &:focus {
-        width: 45%;
-        height: 65px;
+        width: 55%;
+        top: 20px;
+        right: -80px;
+        height: 55px;
         opacity: 1;
         cursor: text;
       }
       &:focus ~ .search {
-        position: relative;
-        float: right;
-        margin-left: 10px;
-        right: -290px;
+        position: absolute;
+        top: 26px;
+        right: -130px;
         z-index: 6;
         border-radius: 50%;
         background-color: white;
@@ -113,12 +125,14 @@
     }
   }
 }
-@media screen and (min-width: 601px) {
+@media screen and (min-width: 1201px) {
   .search_container{
-    background-color: white;
+    position: absolute;
+    background-color: #fff;
     padding: 5px;
     border-radius: 24px;
-    margin-left: 40px;
+    right: 0;
+    margin-left: auto;
     -webkit-box-shadow: 0px 6px 19px -1px rgba(0,0,0,0.14);
     -moz-box-shadow: 0px 6px 19px -1px rgba(0,0,0,0.14);
     box-shadow: 0px 6px 19px -1px rgba(0,0,0,0.14);
@@ -129,6 +143,7 @@
       border-radius: 24px;
     }
   }
+
   .search_icon{
       position: relative;
       margin: auto;
@@ -137,9 +152,11 @@
       float: right;
       left: -35px;
       top: 14px;
+
       &:hover {
         cursor: pointer;
       }
+
       &::before {
         content: "";
         position: absolute;

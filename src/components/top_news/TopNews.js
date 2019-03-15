@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap-4-grid/css/grid.css';
-import './Topnews_style.css';
+import './topnews_style.css';
 
 class TopNews extends Component{
 
@@ -50,12 +50,23 @@ class TopNews extends Component{
       'pageSize=7&' +
       'page=' + page + '&' +
       'apiKey=e57869d5c03b48e78801cef6dae61741';
-    }else{
-      fetch_query = 'https://newsapi.org/v2/top-headlines?' +
-      'country=' + country + '&' +
+    }
+    else{
+
+      if(country === 'general'){
+        fetch_query = 'https://newsapi.org/v2/top-headlines?' +
+      'category=' + country + '&' +
       'pageSize=7&' +
       'page=' + page + '&' +
       'apiKey=e57869d5c03b48e78801cef6dae61741';
+      }else{
+        fetch_query = 'https://newsapi.org/v2/top-headlines?' +
+        'country=' + country + '&' +
+        'pageSize=7&' +
+        'page=' + page + '&' +
+        'apiKey=e57869d5c03b48e78801cef6dae61741';
+      }
+      
     }
 
     fetch(fetch_query, myInit)
@@ -64,15 +75,20 @@ class TopNews extends Component{
     })
     .then(data => {
       if (data.status === "ok") {
-        let articles = data.articles;
+        
         let total_results = data.totalResults;
-        let total_pages = Math.round(total_results / 7);
+        let articles = data.articles;
+
+        let total_round = Math.round(total_results / 7)
+
+        let total_pages = total_round < 100 ? total_round : 99;
 
         this.setState({
           total_pages: total_pages,
           articles: articles
         });
       }
+
     });
   }
 
@@ -105,8 +121,6 @@ class TopNews extends Component{
 
   }
 
-
-
   render(){
 
     var articles = this.state.articles;
@@ -126,8 +140,7 @@ class TopNews extends Component{
         return '';
       }
     }
-
-    if (articles != null) {
+    if (articles != null && articles !== 0) {
 
       var Render_news_card = Object.keys(articles).map(function(key){
         return (
@@ -145,6 +158,8 @@ class TopNews extends Component{
           )
       });
 
+    }else{
+      Render_news_card = <div className='topnews_loading'><div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
     }
 
     let formatNumberPage = (number) =>{
@@ -212,10 +227,10 @@ class TopNews extends Component{
     let paginationBarState = this.state.paginationBarState;
       return(
         <section className='container top_news_container'>
-          <div className='row'>
+          <div className='row top_news_row'>
           {Render_news_card}
           </div>
-          <div className='row'>
+          <div className='row pagintaion_container'>
             <div className={paginationBarState}>
               <span onClick={() => this.setPage(getPage('firtPage'))}>{formatNumberPage(getPage('firtPage'))}</span>
               <span onClick={() => this.setPage(getPage('prevPage'))}>{formatNumberPage(getPage('prevPage'))}</span>

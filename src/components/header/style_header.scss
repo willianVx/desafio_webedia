@@ -1,23 +1,36 @@
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1200px) {
 	.header_container{
-		display: inline-flex;
+
+		display: flex;
 		margin: 20px;
 		width: 90%;
 		height: 30px;
+
+		.container{
+			width: auto;
+		}
+
 	}
 }
-@media screen and (min-width: 601px) {
+@media screen and (min-width: 1201px) {
 	.header_container{
 		width: 100%;
 		display: flex;
 		flex-wrap: wrap-reverse;
 		.header_top{
-			margin-left: 0px;
+			position: relative;
+			max-width: 1011px;
 		    display: flex;
 		    flex-wrap: wrap;
-		    justify-content: flex-end;
+		    justify-content: center;
 		    margin-top: 20px;
 		    margin-bottom: 20px;
 		}
+		.header_logo{
+			margin: auto;
+			left: 0;
+			right: 0;
+		}
 	}
+
 }

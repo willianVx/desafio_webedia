@@ -17,7 +17,7 @@ class Header extends Component{
 
   handle_display(focus){
     let screen = document.documentElement.clientWidth;
-    if (screen >= 601) {
+    if (screen >= 1200) {
       return;
     }
     if (focus) {
@@ -39,7 +39,7 @@ class Header extends Component{
         <div className='header_container'>
           <Menu display={switch_display}/>
             <div className='header_top container'>
-                <Logo display={switch_display} link={'/'} />
+                <Logo className='header_logo' display={switch_display} link={'/'} />
                 <Search whenPutInFocus={this.handle_display} updateSearchValue = {this.props.updateSearchValue}/>
             </div>
         </div>

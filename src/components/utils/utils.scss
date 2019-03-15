@@ -1,6 +1,13 @@
+@media screen and (max-width: 1200px){
+	.brand_webedia{
+	    margin-top: 0px;
+	    margin-left: -30px;
+	}
+}
 .brand_webedia{
+  position: relative;
   height:30px;    
-  margin-left: 40px;
+  margin-top:7px;
 }
 .div_trasition{
   transition: all 200s ease;
